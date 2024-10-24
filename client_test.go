@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/supabase-community/supabase-go"
+	"github.com/supabase-community/auth-go"
 )
 
 const (
@@ -13,7 +13,7 @@ const (
 )
 
 func TestFrom(t *testing.T) {
-	client, err := supabase.NewClient(API_URL, API_KEY, nil)
+	client, err := auth.NewClient(API_URL, API_KEY, nil)
 	if err != nil {
 		fmt.Println("cannot initalize client", err)
 	}
@@ -22,7 +22,7 @@ func TestFrom(t *testing.T) {
 }
 
 func TestRpc(t *testing.T) {
-	client, err := supabase.NewClient(API_URL, API_KEY, nil)
+	client, err := auth.NewClient(API_URL, API_KEY, nil)
 	if err != nil {
 		fmt.Println("cannot initalize client", err)
 	}
@@ -31,7 +31,7 @@ func TestRpc(t *testing.T) {
 }
 
 func TestStorage(t *testing.T) {
-	client, err := supabase.NewClient(API_URL, API_KEY, nil)
+	client, err := auth.NewClient(API_URL, API_KEY, nil)
 	if err != nil {
 		fmt.Println("cannot initalize client", err)
 	}
@@ -40,7 +40,7 @@ func TestStorage(t *testing.T) {
 }
 
 func TestFunctions(t *testing.T) {
-	client, err := supabase.NewClient(API_URL, API_KEY, nil)
+	client, err := auth.NewClient(API_URL, API_KEY, nil)
 	if err != nil {
 		fmt.Println("cannot initalize client", err)
 	}
