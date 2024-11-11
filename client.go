@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/supabase-community/auth-go"
+	auth "github.com/supabase-community/auth-go"
 	"github.com/supabase-community/auth-go/types"
 	"github.com/supabase-community/functions-go"
 	postgrest "github.com/supabase-community/postgrest-go"
@@ -14,14 +14,14 @@ import (
 
 const (
 	REST_URL      = "/rest/v1"
-	STORAGE_URL  = "/storage/v1"
+	STORAGE_URL   = "/storage/v1"
 	AUTH_URL      = "/auth/v1"
 	FUNCTIONS_URL = "/functions/v1"
 )
 
 type Client struct {
-	rest    *postgrest.Client
-	Storage *storage_go.Client
+	rest      *postgrest.Client
+	Storage   *storage_go.Client
 	Auth      auth.Client
 	Functions *functions.Client
 	options   clientOptions
@@ -71,8 +71,7 @@ func NewClient(url, key string, options *ClientOptions) (*Client, error) {
 
 	client.rest = postgrest.NewClient(url+REST_URL, schema, headers)
 	client.Storage = storage_go.NewClient(url+STORAGE_URL, key, headers)
-	tmp := auth.New(url, key)
-	client.Auth = tmp.WithCustomAuthURL(url + AUTH_URL)
+	client.Auth = auth.New(url+AUTH_URL, key)
 	client.Functions = functions.NewClient(url+FUNCTIONS_URL, key, headers)
 
 	return client, nil

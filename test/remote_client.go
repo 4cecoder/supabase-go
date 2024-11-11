@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"github.com/supabase-community/auth-go"
+	supa "github.com/supabase-community/supabase-go"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 	email := os.Getenv("TESTUSER")
 	password := os.Getenv("TESTUSERPASSWORD")
 
-	client, err := auth.NewClient(projectURL, anonKey, nil)
+	client, err := supa.NewClient(projectURL, anonKey, nil)
 	if err != nil {
 		fmt.Println("cannot initalize client", err)
 	}
